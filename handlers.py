@@ -1,18 +1,33 @@
 # handlers.py
 
 import time
+import json
 from utils import send_message, parse_duration
 from db import get_db_connection
 
 def handle_update(message):
+    json_str = json.dumps(message, indent=2)
+    print(json_str)
     chat_id = message['chat']['id']
     text = message.get('text', '')
-    if text.startswith('/pin'):
+    if text == '/pin':
         handle_pin(chat_id, message)
+    elif text == '/ping':
+        handle_ping(chat_id)
     elif text.startswith('/remindme'):
         handle_remindme(chat_id, message)
+    elif text.startswith('/flip'):
+        handle_flip(chat_id)
     else:
-        send_message(chat_id, 'Unknown command.')
+        send_message(chat_id, "I'm sorry, I didn't understand that command.")
+
+def handle_flip(chat_id):
+    # Send the table flip emoticon
+    table_flip_emoticon = "(╯°□°）╯︵ ┻━┻"
+    send_message(chat_id, table_flip_emoticon)
+
+def handle_ping(chat_id):
+    send_message(chat_id, 'Pong!')
 
 def handle_pin(chat_id, message):
     user_id = message['from']['id']
