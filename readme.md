@@ -1,8 +1,8 @@
 # test locally
 ### 1. install/config cloudflare tunnel
 - free tier > zero trust > networks > tunnels
-- download/run msi
-- cmd `cloudflared.exe service install <key>`
+- download/install msi/run `cloudflared.exe service install <key>`
+- or, run `cloudflared tunnel --url http://localhost:5000`
 - copy output `url` into `set_webhook.py`
 ```shell
 2024-11-08T02:13:02Z INF +--------------------------------------------------------------------------------------------+

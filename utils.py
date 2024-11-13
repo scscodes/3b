@@ -3,11 +3,11 @@
 import requests
 import config
 
-TOKEN = config.TELEGRAM_BOT_TOKEN
+TOKEN = config.BOT_TOKEN
 
-def send_message(chat_id, text):
+def send_message(chat_id, text, message_id=None):
     url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
-    payload = {'chat_id': chat_id, 'text': text}
+    payload = {'chat_id': chat_id, 'text': text, 'reply_to_message_id': message_id}
     requests.post(url, json=payload)
 
 def parse_duration(duration_str):

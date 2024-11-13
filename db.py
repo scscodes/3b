@@ -2,7 +2,9 @@
 
 import sqlite3
 
-DB_NAME = 'bot.db'
+import config
+
+DB_NAME = config.DB_NAME
 # db.py
 
 def init_db():

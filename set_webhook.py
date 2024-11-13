@@ -1,10 +1,16 @@
 # set_webhook.py
+import os
 
 import requests
 import config
+from dotenv import load_dotenv
 
-TOKEN = config.TELEGRAM_BOT_TOKEN
-WEBHOOK_URL = f'https://ourselves-holders--romance.trycloudflare.com/{TOKEN}'  # Replace with your ngrok URL
+load_dotenv()
+
+
+TOKEN = os.getenv('BOT_TOKEN')
+WEBHOOK = os.getenv('WEBHOOK_URL')
+WEBHOOK_URL = f'{WEBHOOK}/{TOKEN}'  # Replace with your ngrok URL
 
 def set_webhook():
     url = f'https://api.telegram.org/bot{TOKEN}/setWebhook'

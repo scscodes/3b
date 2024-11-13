@@ -9,7 +9,7 @@ import config
 
 app = Flask(__name__)
 
-TOKEN = config.TELEGRAM_BOT_TOKEN
+TOKEN = config.BOT_TOKEN
 
 # Webhook route
 @app.route(f'/{TOKEN}', methods=['POST'])
